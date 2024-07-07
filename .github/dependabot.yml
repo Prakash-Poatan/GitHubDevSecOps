@@ -10,14 +10,12 @@ updates:
       include: "scope"
     target-branch: "main"
     rebase-strategy: "auto"
-    pull-request-branch-name: "dependabot/${dependency-name}-${dependency-version}"
     assignees:
-      - "your-github-username"
+      - "Prakash-Poatan"
     reviewers:
-      - "your-github-username"
+      - "Prakash-Poatan"
     labels:
       - "dependencies"
       - "automated"
     ignore:
-      - dependency-name: "some-dependency"
-        versions: ["1.0.0"]
+      - dependency-name: "guava"
