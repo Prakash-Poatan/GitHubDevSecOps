@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/" # Location of your pom.xml file
+    schedule:
+      interval: "weekly" # Check for updates weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    target-branch: "main"
+    rebase-strategy: "auto"
+    pull-request-branch-name: "dependabot/${dependency-name}-${dependency-version}"
+    assignees:
+      - "your-github-username"
+    reviewers:
+      - "your-github-username"
+    labels:
+      - "dependencies"
+      - "automated"
+    ignore:
+      - dependency-name: "some-dependency"
+        versions: ["1.0.0"]
