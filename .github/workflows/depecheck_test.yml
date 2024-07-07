@@ -19,15 +19,10 @@ jobs:
         run: mvn clean install
 
       - name: Run OWASP Dependency Check
-        uses: jorisroovers/depcheck-action@v2
-        with:
-          project: 'test'
-          path: '.'
-          format: 'HTML'
-          outputDirectory: 'reports'
-          args: >
-            --failOnCVSS 7
-            --enableRetired
+        run: |
+          curl -LO https://github.com/jeremylong/DependencyCheck/releases/download/v7.4.4/dependency-check-7.4.4-release.zip
+          unzip dependency-check-7.4.4-release.zip
+          ./dependency-check/bin/dependency-check.sh --project "test" --scan . --format "HTML" --out reports --failOnCVSS 7 --enableRetired
 
       - name: Upload Dependency Check report
         uses: actions/upload-artifact@v3
